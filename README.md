@@ -5,6 +5,6 @@ Full-stack Notes app where only logged-in users can create, edit, and delete the
 ## Tech Stack
 
 - Backend: Node.js + Express + MongoDB + Mongoose
-- Frontend: Next.js
+- Frontend: Vite + React
 - Auth: JSON Web Tokens (JWT)
 - localStorage for persisting login on frontend
