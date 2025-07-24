@@ -47,3 +47,13 @@ app.use(middleware.errorHandler);
 app.listen(PORT, () => {
   logger.info(`Server running on: http://localhost:${PORT}`);
 });
+
+// Global error handling
+process.on("unhandledRejection", (reason) => {
+  logger.error("Unhandled Rejection:", reason);
+});
+
+process.on("uncaughtException", (error) => {
+  logger.error("Uncaught Exception:", error);
+  process.exit(1);
+});
