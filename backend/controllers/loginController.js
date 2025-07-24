@@ -18,6 +18,10 @@ const loginUser = async (req, res) => {
     id: user.id,
   };
 
+  if (!process.env.SECRET) {
+    throw new Error("SECRET jwt key not set as environment variable");
+  }
+
   const token = jwt.sign(userForToken, process.env.SECRET, {
     expiresIn: 60 * 60,
   });
