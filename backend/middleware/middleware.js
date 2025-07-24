@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 const logger = require("./logger");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
