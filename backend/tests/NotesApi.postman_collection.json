@@ -1,0 +1,238 @@
+{
+	"info": {
+		"_postman_id": "a823aca7-647c-46c8-9a32-fe42faf4357d",
+		"name": "NotesApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46132907",
+		"_collection_link": "https://manuel-4188684.postman.co/workspace/Manuel's-Workspace~582ebb13-44d8-498b-8506-23de67e28bb1/collection/46132907-a823aca7-647c-46c8-9a32-fe42faf4357d?action=share&source=collection_link&creator=46132907"
+	},
+	"item": [
+		{
+			"name": "NewNote",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"201 Created\", () => {",
+							"  pm.response.to.have.status(201);",
+							"});",
+							"",
+							"const createdNote = pm.response.json();",
+							"pm.environment.set(\"noteId\", createdNote.id);",
+							"pm.environment.set(\"noteTitle\", createdNote.title);",
+							"pm.environment.set(\"noteContent\", createdNote.content);",
+							"",
+							"pm.test(\"Has title and content\", () => {",
+							"  pm.expect(createdNote.title).to.exist;",
+							"  pm.expect(createdNote.content).to.exist;",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"content\": \"This is a note created via Postman\",\n  \"title\": \"Test Note\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/notes",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AllNotes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"200 OK\", () => {",
+							"  pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"packages": {},
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/notes",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Note updated\", () => {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"const updatedNote = pm.response.json();",
+							"",
+							"pm.test(\"Updated content correct\", () => {",
+							"  pm.expect(updatedNote.title).to.equal(\"Updated Note Title\");",
+							"  pm.expect(updatedNote.content).to.equal(\"Updated note content\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"content\": \"Updated note content\",\n  \"title\": \"Updated Note Title\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/notes/68820647dfdaacbee21074ac",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"notes",
+						"68820647dfdaacbee21074ac"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ByID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Note deleted\", () => {",
+							"  pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/notes/688211fee1eb85f8a1eb75d5",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"notes",
+						"688211fee1eb85f8a1eb75d5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"content\": \"Postman test note\",\n  \"title\": \"Postman test note\"\n}"
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/notes/68820647dfdaacbee21074ac",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"notes",
+						"68820647dfdaacbee21074ac"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:3001",
+			"type": "default"
+		}
+	]
+}
