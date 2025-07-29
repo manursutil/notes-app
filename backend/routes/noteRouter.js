@@ -7,12 +7,14 @@ const {
   getNoteById,
 } = require("../controllers/notesController");
 
+const { userExtractor } = require("../middleware/middleware");
+
 const router = express.Router();
 
-router.get("/", getAllNotes);
-router.get("/:id", getNoteById);
-router.post("/", createNewNote);
-router.delete("/:id", deleteNote);
-router.put("/:id", updateNote);
+router.get("/", userExtractor, getAllNotes);
+router.post("/", userExtractor, createNewNote);
+router.get("/:id", userExtractor, getNoteById);
+router.put("/:id", userExtractor, updateNote);
+router.delete("/:id", userExtractor, deleteNote);
 
 module.exports = router;

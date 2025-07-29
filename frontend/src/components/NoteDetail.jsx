@@ -32,7 +32,7 @@ const NoteDetail = ({ notes, onBack, onDeleteNote, onEditNote }) => {
     };
 
     return (
-        <div className="max-w-xl mx-auto mt-8 p-6 bg-white border rounded shadow">
+        <div className="max-w-xl mx-auto mt-8 p-6 rounded shadow bg-gray-50 border-b border-gray-200 shadow-sm">
             {isEditing ? (
                 <>
                     <h2 className="text-xl font-semibold mb-4">Edit Note</h2>

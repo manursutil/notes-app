@@ -19,7 +19,7 @@ const AddNoteForm = ({ onAddNote }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-xl mx-auto mt-4 mb-6 p-4 bg-white border rounded shadow">
+        <form onSubmit={handleSubmit} className="max-w-xl mx-auto mt-4 mb-6 p-4 border-b border-gray-200 shadow-sm rounded bg-gray-50">
             <h2 className="text-lg font-semibold text-gray-800 mb-4">Add a New Note</h2>
 
             <div className="mb-4">
@@ -28,7 +28,7 @@ const AddNoteForm = ({ onAddNote }) => {
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
                     placeholder="Note title"
                 />
             </div>
@@ -39,7 +39,7 @@ const AddNoteForm = ({ onAddNote }) => {
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     rows={4}
-                    className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                    className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none bg-white"
                     placeholder="Write your note..."
                 />
             </div>

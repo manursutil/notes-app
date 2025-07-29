@@ -11,10 +11,10 @@ const NotesList = ({ notes, onSelectNote }) => {
         <div className="max-w-xl mx-auto mt-6">
             <input
                 type="text"
-                placeholder="Search notes..."
+                placeholder="🔍 Search notes..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-2 border border-gray-500 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 border-b shadow-sm rounded"
             />
             <ul className="space-y-2">
                 {filteredNotes.length > 0 ? (
@@ -22,7 +22,7 @@ const NotesList = ({ notes, onSelectNote }) => {
                         <li
                             key={note.id}
                             onClick={() => onSelectNote(note.id)}
-                            className="cursor-pointer px-4 py-2 bg-white hover:bg-blue-50 border rounded shadow-sm transition"
+                            className="cursor-pointer px-4 py-2 hover:bg-blue-50 border rounded shadow-sm transition border-b border-gray-200 shadow-sm rounded bg-gray-50"
                         >
                             <span className="font-medium text-gray-800">{note.title}</span>
                         </li>
