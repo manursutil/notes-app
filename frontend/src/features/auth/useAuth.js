@@ -26,6 +26,7 @@ export const useAuth = () => {
   };
 
   const logout = () => {
+    console.log("logging out");
     window.localStorage.removeItem("loggedNotesUser");
     setUser(null);
   };
