@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import notesService from "./notesService";
 
 export const useNotes = () => {
@@ -41,10 +41,6 @@ export const useNotes = () => {
       console.error("Failed to edit note", err);
     }
   };
-
-  useEffect(() => {
-    fetchNotes();
-  }, []);
 
   return { notes, addNote, fetchNotes, deleteNote, editNote };
 };
